@@ -5,20 +5,11 @@ import { getExercises } from "../features/exerciseSlice";
 
 import ExerciseDetails from "../components/ExerciseDetails";
 import ExerciseForm from "../components/ExerciseForm";
-import { useState } from "react";
-import { login } from "../features/userSlice";
 
 const Home = () => {
   const exercises = useSelector((state) => state.exercise.exercises);
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      dispatch(login(user));
-    }
-  }, []);
 
   useEffect(() => {
     const fetchExercises = async () => {
